@@ -28,4 +28,8 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/dropzone/min/dropzone.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+
+
+    {{--  --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>

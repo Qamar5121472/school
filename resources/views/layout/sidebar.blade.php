@@ -1,9 +1,19 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
-                <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="#" class="brand-link">
+                @php
+                    $logo = App\Models\Setting::first();
+                @endphp
+                @if (isset($logo))
+                    <img src="{{ asset('logo/' . $logo->logo ?? '') }}" alt="AdminLTE Logo"
+                        class="brand-image img-circle elevation-3" style="opacity: .8" />
+                @else
+                    <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                        class="brand-image img-circle elevation-3" style="opacity: .8">
+                @endif
+
+
                 <span class="brand-text font-weight-light">School</span>
             </a>
 
@@ -47,7 +57,6 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-
                         </li>
                         <li class="nav-item">
                             <a href="../widgets.html" class="nav-link">
@@ -58,8 +67,6 @@
                                 </p>
                             </a>
                         </li>
-
-
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
@@ -70,21 +77,73 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="{{ route('admissionList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Addmission List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{ route('newAddmission') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>New Addmission</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="../charts/flot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Addmission List</p>
-                                    </a>
-                                </li>
-
                             </ul>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Teacher
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('admissionList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Teacher List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('newAddmission') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>New Teacher</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Settings
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('aboutUs') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>About Us</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('setting') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Setting</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

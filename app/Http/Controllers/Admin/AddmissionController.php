@@ -24,7 +24,14 @@ class AddmissionController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $admission = Addmission::get();
+            return view('admin.addmission.admissionList',compact('admission'));
+        }catch(Exception $exception){
+            $alert['type'] = 'danger';
+            $alert['message'] = 'SomeThing went wrong';
+            return redirect()->back()->with('alert', $alert);
+        }
     }
 
     /**
@@ -44,10 +51,31 @@ class AddmissionController extends Controller
             DB::beginTransaction();
 
             $this->studentService->regiaterStudent($request);
-            dd($request->all());
+            // dd($request->all());
+            DB::commit();
+            $alert['type'] = 'success';
+            $alert['message'] = 'Status Updated Successfully';
+            return redirect()->route('admissionList');
+        }catch(Exception $exception){
+            dd($exception->getMessage());
+            DB::rollBack();
+            $alert['type'] = 'danger';
+            $alert['message'] = 'SomeThing went wrong';
+            return redirect()->back()->with('alert', $alert);
+        }
+    }
+
+    public function updateInfo(Request $request){
+        try{
+            DB::beginTransaction();
+            $alert = $this->studentService->updateInformation($request);
+            return redirect()->route('admissionList')->with($alert);
             DB::commit();
         }catch(Exception $exception){
             DB::rollBack();
+            $alert['type'] = 'danger';
+            $alert['message'] = 'SomeThing went wrong';
+            return redirect()->back()->with('alert', $alert);
         }
     }
 
@@ -62,9 +90,16 @@ class AddmissionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Addmission $addmission)
+    public function detail($id)
     {
-        //
+        try{
+            $data = $this->studentService->getDetail($id);
+            return view('admin.addmission.detail',compact('data'));
+        }catch(Exception $exception){
+            $alert['type'] = 'danger';
+            $alert['message'] = 'SomeThing went wrong';
+            return redirect()->back()->with('alert', $alert);
+        }
     }
 
     /**
@@ -78,16 +113,33 @@ class AddmissionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Addmission $addmission)
+    public function update($id)
     {
-        //
+        try{
+            $data = $this->studentService->getDetail($id);
+            return view('admin.addmission.upate',compact('data'));
+        }catch(Exception $exception){
+            $alert['type'] = 'danger';
+            $alert['message'] = 'SomeThing went wrong';
+            return redirect()->back()->with('alert', $alert);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Addmission $addmission)
+    public function delete($id)
     {
-        //
+        try{
+            Addmission::find($id)->delete();
+            $alert['type'] = 'success';
+            $alert['message'] = 'Status Updated Successfully';
+            return redirect()->route('admissionList')->with($alert);
+        }catch(Exception $exception){
+            DB::rollBack();
+            $alert['type'] = 'danger';
+            $alert['message'] = 'SomeThing went wrong';
+            return redirect()->back()->with('alert', $alert);
+        }
     }
 }
