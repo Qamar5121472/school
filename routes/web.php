@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AddmissionController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     Route::get()
+// });
+// Route::get('/',[FrontendController::class,'index'])->name('home');
+Route::controller(FrontendController::class)->group(function(){
+    Route::get('/','index')->name('home');
+    Route::get('/about-us','aboutUs')->name('about');
+    Route::get('/service','service')->name('service');
+    Route::get('/conatct','contact')->name('contact');
+    Route::get('/design','design')->name('design');
 });
-
 Route::get('/dashboard', function () {
     return view('admin.dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -54,6 +62,8 @@ Route::middleware('auth')->group(function () {
         });
     });
 
+
+    Route::get('/logout',[AddmissionController::class,'logout'])->name('adminLogout');
 
 
 });

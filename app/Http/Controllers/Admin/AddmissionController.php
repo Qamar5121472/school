@@ -142,4 +142,15 @@ class AddmissionController extends Controller
             return redirect()->back()->with('alert', $alert);
         }
     }
+
+
+    public function logout(){
+        try{
+            session()->flush();
+            cache()->clear();
+            return redirect()->url('/');
+        }catch(Exception $exception){
+            return redirect()->back()->with('error','something went wrong');
+        }
+    }
 }
