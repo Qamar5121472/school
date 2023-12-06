@@ -26,7 +26,15 @@ Route::controller(FrontendController::class)->group(function(){
     Route::get('/about-us','aboutUs')->name('about');
     Route::get('/service','service')->name('service');
     Route::get('/conatct','contact')->name('contact');
-    Route::get('/design','design')->name('design');
+    Route::get('/teachers','teacher')->name('teacher');
+    Route::get('/courses','courses')->name('courses');
+    Route::get('/admission','addmission')->name('addmission');
+
+    Route::get('/join-us','joinUs')->name('registerAsTeacher');
+
+    Route::POST('/student-registration','createAddmission')->name('studentRegister');
+
+    Route::POST('/teacher-registration','teacherRegistration')->name('teacherRegistration');
 });
 Route::get('/dashboard', function () {
     return view('admin.dashboard.dashboard');

@@ -6,6 +6,7 @@ namespace App\Services;
 use App\Models\Addmission;
 use App\Models\Document;
 use Exception;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\DB;
 
 class StudentService{
@@ -153,6 +154,120 @@ class StudentService{
         }
     }
 
+    public function teacherRegistration($request){
+        try{
+            DB::beginTransaction();
+            $model = new Teacher();
+            $model->name = $request->teacher_name;
+            $model->cnic = $request->cnicNo;
+
+            if($request->hasFile('cnciFrontImage')){
+
+                $image=$request->file('cnciFrontImage');
+
+                $ext=$image->extension();
+                $image_name = time().'.'.$ext;
+
+                $image->move(public_path('images/documents'), $image_name);
+                $model->cnic_front_image = $image_name;
+
+             }
+
+             if($request->hasFile('cnciBackImage')){
+
+                $image=$request->file('cnciBackImage');
+
+                $ext=$image->extension();
+                $image_name = time().'.'.$ext;
+
+                $image->move(public_path('images/documents'), $image_name);
+                $model->cnic_back_image = $image_name;
+
+             }
+
+
+
+            $model->father_name = $request->father_name;
+            $model->father_cnic_no = $request->fatherIdCardNo;
+            $model->nationality = $request->natinality;
+
+            if($request->hasFile('fatherIdCartFrontImage')){
+
+                $image=$request->file('fatherIdCartFrontImage');
+
+                $ext=$image->extension();
+                $image_name = time().'.'.$ext;
+
+                $image->move(public_path('images/documents'), $image_name);
+                $model->father_cnic_front_image = $image_name;
+
+             }
+
+
+             if($request->hasFile('fatherIdCartBackImage')){
+
+                $image=$request->file('fatherIdCartBackImage');
+
+                $ext=$image->extension();
+                $image_name = time().'.'.$ext;
+
+                $image->move(public_path('images/documents'), $image_name);
+                $model->father_cnic_back_image = $image_name;
+
+             }
+
+            $model->qualification = $request->qualification;
+
+
+            if($request->hasFile('fscResultCard')){
+
+                $image=$request->file('fscResultCard');
+
+                $ext=$image->extension();
+                $image_name = time().'.'.$ext;
+
+                $image->move(public_path('images/documents'), $image_name);
+                $model->fsc_doc_image = $image_name;
+
+             }
+
+
+             if($request->hasFile('bsCertificate')){
+
+                $image=$request->file('bsCertificate');
+
+                $ext=$image->extension();
+                $image_name = time().'.'.$ext;
+
+                $image->move(public_path('images/documents'), $image_name);
+                $model->ba_doc_image = $image_name;
+
+             }
+
+            $model->contact_no = $request->contactNo;
+            $model->traning = $request->anyOtherTraning;
+            $model->experiance = $request->experiance;
+
+             $model->save();
+
+
+
+
+
+            DB::commit();
+            return 'success';
+        }catch(Exception $exception){
+            DB::rollBack();
+            // dd($exception->getMessage());
+            $alert['type'] = 'danger';
+            $alert['message'] = 'Something went wrong';
+            return redirect()->back()->with('alert', $alert);
+        }
+    }
+
+
+
+
     public function regiaterStudent($register){
         try{
             // dd($register);
@@ -258,7 +373,7 @@ class StudentService{
             $model->father_occupation = $register->fatherOccupation;
             $model->father_salary = $register->fatherSalary;
             $model->no_of_sublings = $register->numberOfSublings;
-            $model->mother_name = $register->contactNo;
+            $model->mother_name = $register->motherName ?? '-';
             $model->mother_id_card_number = $register->motherIdCartNo;
             $model->father_education = $register->fatherEducation;
             $model->mother_education = $register->motherEducation;
@@ -268,10 +383,10 @@ class StudentService{
             DB::commit();
             $alert['type'] = 'success';
             $alert['message'] = 'Status Updated Successfully';
-            return $alert;
+            return 'success';
         }catch(Exception $exception){
             DB::rollBack();
-            dd($exception->getMessage());
+            // dd($exception->getMessage());
             $alert['type'] = 'danger';
             $alert['message'] = 'Something went wrong';
             return redirect()->back()->with('alert', $alert);

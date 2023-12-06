@@ -1,59 +1,98 @@
 @extends('frontend.layout.navbar')
 @section('title', 'About Us')
 @section('content')
-    {{-- <div class="content">
-
-    </div> --}}
-    <!-- About 1 - Bootstrap Brain Component -->
-    <section class="py-3 py-md-5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('frontEndAssets/images/bg_2.jpg') }}')">
+        <div class="overlay"></div>
         <div class="container">
-            <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-                <div class="col-12 col-lg-6 col-xl-5">
-                    <img class="img-fluid rounded" loading="lazy"
-                        src="https://bootstrapbrain.com/demo/components/abouts/about-1/assets/img/about-img-1.jpg"
-                        alt="About 1">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-2 bread">About Us</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/') }}">Home <i
+                                    class="ion-ios-arrow-forward"></i></a></span> <span>About us <i
+                                class="ion-ios-arrow-forward"></i></span></p>
                 </div>
-                <div class="col-12 col-lg-6 col-xl-7">
-                    <div class="row justify-content-xl-center">
-                        <div class="col-12 col-xl-11">
-                            <h2 class="mb-3">Who Are We?</h2>
-                            <p class="lead fs-4 text-secondary mb-3">We help people to build incredible brands and superior
-                                products. Our perspective is to furnish outstanding captivating services.</p>
-                            <p class="mb-5">We are a fast-growing company, but we have never lost sight of our core
-                                values. We believe in collaboration, innovation, and customer satisfaction. We are always
-                                looking for new ways to improve our products and services.</p>
-                            <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                                fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Versatile Brand</h2>
-                                            <p class="text-secondary mb-0">We are crafting a digital method that subsists
-                                                life across all mediums.</p>
-                                        </div>
-                                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pt ftc-no-pb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 order-md-last wrap-about py-5 wrap-about bg-light">
+                    <div class="text px-4 ftco-animate">
+                        <h2 class="mb-4">Welcome to Kiddos Learning School</h2>
+                        <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it
+                            would have been rewritten a thousand times and everything that was left from its origin would be
+                            the word.</p>
+                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
+                            ocean. A small river named Duden flows by their place and supplies it with the necessary
+                            regelialia. And if she hasn’t been rewritten, then they are still using her.</p>
+                        <p><a href="#" class="btn btn-secondary px-4 py-3">Read More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate">
+                    <h2 class="mb-4">What We Offer</h2>
+                    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would
+                        have been rewritten a thousand times and everything that was left from its origin would be the word.
+                    </p>
+                    <div class="row mt-5">
+                        <div class="col-lg-6">
+                            <div class="services-2 d-flex">
+                                <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span
+                                        class="flaticon-security"></span></div>
+                                <div class="text">
+                                    <h3>Safety First</h3>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
                                 </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                                fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Digital Agency</h2>
-                                            <p class="text-secondary mb-0">We believe in innovation by merging primary with
-                                                elaborate ideas.</p>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="services-2 d-flex">
+                                <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span
+                                        class="flaticon-reading"></span></div>
+                                <div class="text">
+                                    <h3>Regular Classes</h3>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="services-2 d-flex">
+                                <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span
+                                        class="flaticon-diploma"></span></div>
+                                <div class="text">
+                                    <h3>Certified Teachers</h3>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="services-2 d-flex">
+                                <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span
+                                        class="flaticon-education"></span></div>
+                                <div class="text">
+                                    <h3>Sufficient Classrooms</h3>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="services-2 d-flex">
+                                <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span
+                                        class="flaticon-jigsaw"></span></div>
+                                <div class="text">
+                                    <h3>Creative Lessons</h3>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="services-2 d-flex">
+                                <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span
+                                        class="flaticon-kids"></span></div>
+                                <div class="text">
+                                    <h3>Sports Facilities</h3>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
                                 </div>
                             </div>
                         </div>
@@ -62,4 +101,254 @@
             </div>
         </div>
     </section>
+
+    <section class="ftco-section ftco-counter img" id="section-counter"
+        style="background-image: url('{{ asset('frontEndAssets/images/bg_4.jpg') }}')" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-2">
+                <div class="col-md-8 text-center heading-section heading-section-black ftco-animate">
+                    <h2 class="mb-4"><span>20 Years of</span> Experience</h2>
+                    <p>Separated they live in. A small river named Duden flows by their place and supplies it with the
+                        necessary regelialia. It is a paradisematic country</p>
+                </div>
+            </div>
+            <div class="row d-md-flex align-items-center justify-content-center">
+                <div class="col-lg-10">
+                    <div class="row d-md-flex align-items-center">
+                        <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                            <div class="block-18">
+                                <div class="icon"><span class="flaticon-doctor"></span></div>
+                                <div class="text">
+                                    <strong class="number" data-number="18">0</strong>
+                                    <span>Certified Teachers</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                            <div class="block-18">
+                                <div class="icon"><span class="flaticon-doctor"></span></div>
+                                <div class="text">
+                                    <strong class="number" data-number="351">0</strong>
+                                    <span>Successful Kids</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                            <div class="block-18">
+                                <div class="icon"><span class="flaticon-doctor"></span></div>
+                                <div class="text">
+                                    <strong class="number" data-number="564">0</strong>
+                                    <span>Happy Parents</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                            <div class="block-18">
+                                <div class="icon"><span class="flaticon-doctor"></span></div>
+                                <div class="text">
+                                    <strong class="number" data-number="300">0</strong>
+                                    <span>Awards Won</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section testimony-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-2">
+                <div class="col-md-8 text-center heading-section ftco-animate">
+                    <span class="subheading">Testimonial</span>
+                    <h2 class="mb-4"><span>What Parents</span> Says About Us</h2>
+                    <p>Separated they live in. A small river named Duden flows by their place and supplies it with the
+                        necessary regelialia. It is a paradisematic country</p>
+                </div>
+            </div>
+            <div class="row ftco-animate justify-content-center">
+                <div class="col-md-12">
+                    <div class="carousel-testimony owl-carousel">
+                        <div class="item">
+                            <div class="testimony-wrap d-flex">
+                                <div class="user-img mr-4"
+                                    style="background-image: url('{{ asset('frontEndAssets/images/teacher-1.jpg') }}')">
+                                </div>
+                                <div class="text ml-2 bg-light">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts.</p>
+                                    <p class="name">Racky Henderson</p>
+                                    <span class="position">Father</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap d-flex">
+                                <div class="user-img mr-4"
+                                    style="background-image: url('{{ asset('frontEndAssets/images/teacher-2.jpg') }}')">
+                                </div>
+                                <div class="text ml-2 bg-light">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts.</p>
+                                    <p class="name">Henry Dee</p>
+                                    <span class="position">Mother</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap d-flex">
+                                <div class="user-img mr-4" style="background-image: url(images/teacher-3.jpg') }}')">
+                                </div>
+                                <div class="text ml-2 bg-light">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts.</p>
+                                    <p class="name">Mark Huff</p>
+                                    <span class="position">Mother</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap d-flex">
+                                <div class="user-img mr-4" style="background-image: url(images/teacher-4.jpg') }}')">
+                                </div>
+                                <div class="text ml-2 bg-light">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts.</p>
+                                    <p class="name">Rodel Golez</p>
+                                    <span class="position">Mother</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap d-flex">
+                                <div class="user-img mr-4" style="background-image: url(images/teacher-1.jpg') }}')">
+                                </div>
+                                <div class="text ml-2 bg-light">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts.</p>
+                                    <p class="name">Ken Bosh</p>
+                                    <span class="position">Mother</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" style="background-image: url(images/bg_5.jpg') }}')"
+        data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-md-6 py-5 px-md-5 bg-primary">
+                    <div class="heading-section heading-section-white ftco-animate mb-5">
+                        <span class="subheading">Request A Quote</span>
+                        <h2 class="mb-4">Request A Quote</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+                            live the blind texts.</p>
+                    </div>
+                    <form action="#" class="appointment-form ftco-animate">
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <div class="form-field">
+                                    <div class="select-wrap">
+                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">Select Your Course</option>
+                                            <option value="">Art Lesson</option>
+                                            <option value="">Language Lesson</option>
+                                            <option value="">Music Lesson</option>
+                                            <option value="">Sports</option>
+                                            <option value="">Other Services</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="text" class="form-control" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="submit" value="Request A Quote" class="btn btn-secondary py-3 px-4">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="ftco-gallery">
+        <div class="container-wrap">
+            <div class="row no-gutters">
+                <div class="col-md-3 ftco-animate">
+                    <a href="'{{ asset('frontEndAssets/images/image_1.jpg') }}')"
+                        class="gallery image-popup img d-flex align-items-center"
+                        style="background-image: url('{{ asset('frontEndAssets/images/course-1.jpg') }}')">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-instagram"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="'{{ asset('frontEndAssets/images/image_2.jpg') }}')"
+                        class="gallery image-popup img d-flex align-items-center"
+                        style="background-image: url('{{ asset('frontEndAssets/images/image_2.jpg') }}')">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-instagram"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="'{{ asset('frontEndAssets/images/image_3.jpg') }}')"
+                        class="gallery image-popup img d-flex align-items-center"
+                        style="background-image: url('{{ asset('frontEndAssets/images/image_3.jpg') }}')">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-instagram"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="'{{ asset('frontEndAssets/images/image_4.jpg') }}')"
+                        class="gallery image-popup img d-flex align-items-center"
+                        style="background-image: url('{{ asset('frontEndAssets/images/image_4.jpg') }}')">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-instagram"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 @endsection

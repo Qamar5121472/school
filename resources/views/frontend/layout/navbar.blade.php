@@ -4,66 +4,240 @@
 <head>
     <title>@yield('title')</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel = "stylesheet" href = "{{ asset('frontEndAssets/css/style.css') }}">
-    </head>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/animate.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/aos.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontEndAssets/css/style.css') }}">
+    @stack('style')
+</head>
 
 <body>
-
-    <div class = "main" style = "background-image: url('{{ asset('frontEndAssets/images/1.jpg') }}')">
-        <div class = "navbar">
-            <div class = "icon">
-                @php
-                    $name = App\Models\Setting::first();
-                @endphp <h2 class = "logo">
-                    @if (isset($name))
-                        {{ $name->name ?? 'School Name' }}
-                    @else
-                        School Name
-                    @endif
-                </h2>
+    <div class="py-2 bg-primary">
+        <div class="container">
+            <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+                <div class="col-lg-12 d-block">
+                    <div class="row d-flex">
+                        <div class="col-md-5 pr-4 d-flex topper align-items-center">
+                            <div class="icon bg-fifth mr-2 d-flex justify-content-center align-items-center"><span
+                                    class="icon-map"></span></div>
+                            <span class="text">198 West 21th Street, Suite 721 New York NY 10016</span>
+                        </div>
+                        <div class="col-md pr-4 d-flex topper align-items-center">
+                            <div class="icon bg-secondary mr-2 d-flex justify-content-center align-items-center"><span
+                                    class="icon-paper-plane"></span></div>
+                            @php
+                                $data = \App\Models\Setting::first();
+                            @endphp
+                            <span class="text">
+                                @if (isset($data))
+                                    {{ $data->email ?? '-' }}
+                                @else
+                                    youremail@email.com
+                                @endif
+                            </span>
+                        </div>
+                        <div class="col-md pr-4 d-flex topper align-items-center">
+                            <div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span
+                                    class="icon-phone2"></span></div>
+                            <span class="text">
+                                @if (isset($data))
+                                    {{ $data->phone_no ?? '-' }}
+                                @else
+                                    + 1235 2355 98
+                                @endif
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class = "menu">
-                <ul>
-                    <li>
-                        <a href = "{{ url('/') }}"> HOME </a>
-                    </li>
-                    <li>
-                        <a href = "{{ route('about') }}"> ABOUT </a>
-                    </li>
-                    <li>
-                        <a href = "{{ route('service') }}"> SERVICE
-                        </a>
-                    </li>
-                    <li>
-                        <a href = " {{ route('design') }}">
-                            DESIGN </a>
-                    </li>
-                    <li>
-                        <a href = "{{ route('contact') }}">
-                            CONTACT </a>
-                    </li>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+        <div class="container d-flex align-items-center">
+            <a class="navbar-brand" href="{{ url('/') }}">Kiddos</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link pl-0">Home</a></li>
+                    <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="{{ route('teacher') }}" class="nav-link">Teacher</a></li>
+                    <li class="nav-item"><a href="{{ route('courses') }}" class="nav-link">Courses</a></li>
+                    {{-- <li class="nav-item"><a href="{{ route('courses') }}" class="nav-link">Pricing</a></li> --}}
+                    <li class="nav-item"><a href="{{ route('addmission') }}" class="nav-link">Addmission</a></li>
+                    <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
                 </ul>
             </div>
-            <div class = "search">
-                <input class = "srch" type = "search" name = "" placeholder = "Type To text">
-                <a href = "#">
-                    <button class = "btn">
-                        Search
-                    </button>
-                </a>
-            </div>
-
         </div>
-        @yield('content')
+    </nav>
+    <!-- END nav -->
+
+    @yield('content')
+@show
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-4">
+                <div class="ftco-footer-widget mb-5">
+                    <h2 class="ftco-heading-2">Have a Questions?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St.
+                                    Mountain View, San Francisco, California, USA</span></li>
+                            <li><a href="tel:{{ $data->phone_no }}"><span class="icon icon-phone"></span><span
+                                        class="text">
+                                        @if (isset($data))
+                                            {{ $data->phone_no }}
+                                        @else
+                                            +2
+                                            392 3929 210
+                                        @endif
+                                    </span></a></li>
+                            <li><a href="mailto:{{ $data->email }}"><span class="icon icon-envelope"></span><span
+                                        class="text">
+                                        @if (isset($data))
+                                            {{ $data->email ?? '' }}
+                                        @else
+                                            info@yourdomain.com
+                                        @endif
+                                    </span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="col-md-6 col-lg-3">
+                <div class="ftco-footer-widget mb-5">
+                    <h2 class="ftco-heading-2">Recent Blog</h2>
+                    <div class="block-21 mb-4 d-flex">
+                        <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control
+                                    about</a></h3>
+                            <div class="meta">
+                                <div><a href="#"><span class="icon-calendar"></span> Dec 25, 2018</a></div>
+                                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-21 mb-5 d-flex">
+                        <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control
+                                    about</a></h3>
+                            <div class="meta">
+                                <div><a href="#"><span class="icon-calendar"></span> Dec 25, 2018</a></div>
+                                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            <div class="col-md-6 col-lg-4">
+                <div class="ftco-footer-widget mb-5 ml-md-4">
+                    <h2 class="ftco-heading-2">Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url('/') }}"><span
+                                    class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
+                        <li><a href="{{ route('about') }}"><span
+                                    class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
+                        <li><a href="{{ route('courses') }}"><span
+                                    class="ion-ios-arrow-round-forward mr-2"></span>Courses</a>
+                        </li>
+                        <li><a href="{{ route('registerAsTeacher') }}"><span
+                                    class="ion-ios-arrow-round-forward mr-2"></span>Join as Teacher</a>
+                        </li>
+                        <li><a href="{{ route('contact') }}"><span
+                                    class="ion-ios-arrow-round-forward mr-2"></span>Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="ftco-footer-widget mb-5">
+                    <h2 class="ftco-heading-2">Subscribe Us!</h2>
+                    <form action="#" class="subscribe-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control mb-2 text-center"
+                                placeholder="Enter email address">
+                            <input type="submit" value="Subscribe" class="form-control submit px-3">
+                        </div>
+                    </form>
+                </div>
+                <div class="ftco-footer-widget mb-5">
+                    <h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                        <li class="ftco-animate"><a href="#" target="_blank"><span
+                                    class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#" target="_blank"><span
+                                    class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#" target="_blank"><span
+                                    class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> All rights reserved | This template is made with by <a
+                        href="{{ url('/') }}" target="_blank">SQA SOLUTIONS</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+            stroke="#eeeeee" />
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+            stroke-miterlimit="10" stroke="#F96D00" />
+    </svg></div>
+
+
+<script src="{{ asset('frontEndAssets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/jquery-migrate-3.0.1.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/popper.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/jquery.stellar.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/aos.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/scrollax.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{{ asset('frontEndAssets/js/google-map.js') }}"></script>
+<script src="{{ asset('frontEndAssets/js/main.js') }}"></script>
+@stack('script')
 </body>
 
 </html>
