@@ -264,13 +264,13 @@
                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
                             live the blind texts.</p>
                     </div>
-                    <form action="#" class="appointment-form ftco-animate">
+                    <form action="{{ route('requestForAppointment') }}" class="appointment-form ftco-animate">
                         <div class="d-md-flex">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name">
+                                <input type="text" name="first_name" class="form-control" placeholder="First Name">
                             </div>
                             <div class="form-group ml-md-4">
-                                <input type="text" class="form-control" placeholder="Last Name">
+                                <input type="text" class="form-control" name="last_name" placeholder="Last Name">
                             </div>
                         </div>
                         <div class="d-md-flex">
@@ -278,24 +278,25 @@
                                 <div class="form-field">
                                     <div class="select-wrap">
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="" id="" class="form-control">
+                                        <select name="class" style="color:black !important" id=""
+                                            class="form-control">
                                             <option value="">Select Your Course</option>
-                                            <option value="">Art Lesson</option>
-                                            <option value="">Language Lesson</option>
-                                            <option value="">Music Lesson</option>
-                                            <option value="">Sports</option>
-                                            <option value="">Other Services</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group ml-md-4">
-                                <input type="text" class="form-control" placeholder="Phone">
+                                <input type="text" name="phone" class="form-control" placeholder="Phone">
                             </div>
                         </div>
                         <div class="d-md-flex">
                             <div class="form-group">
-                                <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+                                <textarea name="message" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
                             </div>
                             <div class="form-group ml-md-4">
                                 <input type="submit" value="Request A Quote" class="btn btn-secondary py-3 px-4">
@@ -350,5 +351,62 @@
             </div>
         </div>
     </section>
+    <script>
+        $(document).ready(function() {
+            $(".appointment-form").submit(function(e) {
+                e.preventDefault();
 
+                // Validate form data
+                if (validateForm()) {
+                    // If validation passes, proceed with AJAX submission
+                    submitForm();
+                } else {
+                    // Display validation error using Toastr
+                    toastr.error('Please fill in all required fields.');
+                }
+            });
+
+            function validateForm() {
+                // Add your specific validation logic here
+                var firstName = $("input[name='first_name']").val();
+                var lastName = $("input[name='last_name']").val();
+                var course = $("select[name='course']").val();
+                var phone = $("input[name='phone']").val();
+                var message = $("textarea[name='message']").val();
+
+                // Example: Check if required fields are not empty
+                if (firstName === '' || lastName === '' || course === '' || phone === '' || message === '') {
+                    return false;
+                }
+
+                // Add more validation rules as needed
+
+                return true;
+            }
+
+            function submitForm() {
+                var formData = $(".appointment-form").serialize();
+
+                // Perform AJAX submission
+                $.ajax({
+                    type: "POST",
+                    url: $(".appointment-form").attr("action"),
+                    data: formData,
+                    dataType: "json",
+                    success: function(response) {
+                        // Display Toastr notification based on the response
+                        if (response.success) {
+                            toastr.success(response.message);
+                        } else {
+                            toastr.error(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle AJAX errors
+                        toastr.error("An error occurred while processing your request.");
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

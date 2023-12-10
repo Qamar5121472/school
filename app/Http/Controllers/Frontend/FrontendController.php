@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\enquery;
 use App\Models\frontend;
 use App\Models\Setting;
 use App\Services\StudentService;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class FrontendController extends Controller
 {
     protected $studentService;
@@ -58,7 +60,37 @@ class FrontendController extends Controller
             return redirect()->back()->with('alert',$alert);
         }
     }
+    public function requestForAppointment(Request $request){
+        // dd($request->all());
 
+        try{
+            DB::beginTransaction();
+            $model = new enquery();
+            $model->first_name =  $request->first_name;
+            $model->last_name = $request->last_name;
+            $model->phone_no = $request->phone;
+            $model->class = $request->class;
+            $model->message = $request->message;
+            $model->save();
+            DB::commit();
+            if(isset($model)){
+                $success = 'success';
+                $message = 'Submit Your request Sucessfully we will contact to you in while!';
+                return response()->json(['success' => $success, 'message' => $message]);
+            }else{
+                $error = '';
+                $message = 'Something went wrong!';
+                return response()->json(['error' => $error, 'message' => $message]);
+            }
+
+        }catch(Exception $exception){
+            DB::rollBack();
+            $error = '';
+            $message = 'Something went wrong!';
+            return response()->json(['error' => $error, 'message' => $message]);
+        }
+
+    }
 
 
      public function joinUs(){

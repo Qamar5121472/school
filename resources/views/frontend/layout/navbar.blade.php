@@ -5,6 +5,7 @@
     <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('frontEndAssets/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEndAssets/css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEndAssets/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @stack('style')
 </head>
 
@@ -69,7 +71,13 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
         <div class="container d-flex align-items-center">
-            <a class="navbar-brand" href="{{ url('/') }}">Kiddos</a>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                @if (isset($data))
+                    {{ $data->name }}
+                @else
+                    Kiddos
+                @endif
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
@@ -221,7 +229,7 @@
             stroke-miterlimit="10" stroke="#F96D00" />
     </svg></div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{{ asset('frontEndAssets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('frontEndAssets/js/jquery-migrate-3.0.1.min.js') }}"></script>
 <script src="{{ asset('frontEndAssets/js/popper.min.js') }}"></script>
@@ -237,6 +245,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{{ asset('frontEndAssets/js/google-map.js') }}"></script>
 <script src="{{ asset('frontEndAssets/js/main.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 @stack('script')
 </body>
 

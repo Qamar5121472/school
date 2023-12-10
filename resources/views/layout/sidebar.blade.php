@@ -6,10 +6,10 @@
                     $logo = App\Models\Setting::first();
                 @endphp
                 @if (isset($logo))
-                    <img src="{{ asset('logo/' . $logo->logo ?? '') }}" alt="AdminLTE Logo"
+                    <img src="{{ asset('logo/' . $logo->logo ?? '') }}" alt="Logo"
                         class="brand-image img-circle elevation-3" style="opacity: .8" />
                 @else
-                    <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                    <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt=" Logo"
                         class="brand-image img-circle elevation-3" style="opacity: .8">
                 @endif
 
