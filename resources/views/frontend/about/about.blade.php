@@ -351,62 +351,65 @@
             </div>
         </div>
     </section>
-    <script>
-        $(document).ready(function() {
-            $(".appointment-form").submit(function(e) {
-                e.preventDefault();
+    @push('script')
+        <script>
+            $(document).ready(function() {
+                $(".appointment-form").submit(function(e) {
+                    e.preventDefault();
 
-                // Validate form data
-                if (validateForm()) {
-                    // If validation passes, proceed with AJAX submission
-                    submitForm();
-                } else {
-                    // Display validation error using Toastr
-                    toastr.error('Please fill in all required fields.');
-                }
-            });
-
-            function validateForm() {
-                // Add your specific validation logic here
-                var firstName = $("input[name='first_name']").val();
-                var lastName = $("input[name='last_name']").val();
-                var course = $("select[name='course']").val();
-                var phone = $("input[name='phone']").val();
-                var message = $("textarea[name='message']").val();
-
-                // Example: Check if required fields are not empty
-                if (firstName === '' || lastName === '' || course === '' || phone === '' || message === '') {
-                    return false;
-                }
-
-                // Add more validation rules as needed
-
-                return true;
-            }
-
-            function submitForm() {
-                var formData = $(".appointment-form").serialize();
-
-                // Perform AJAX submission
-                $.ajax({
-                    type: "POST",
-                    url: $(".appointment-form").attr("action"),
-                    data: formData,
-                    dataType: "json",
-                    success: function(response) {
-                        // Display Toastr notification based on the response
-                        if (response.success) {
-                            toastr.success(response.message);
-                        } else {
-                            toastr.error(response.message);
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle AJAX errors
-                        toastr.error("An error occurred while processing your request.");
+                    // Validate form data
+                    if (validateForm()) {
+                        // If validation passes, proceed with AJAX submission
+                        submitForm();
+                    } else {
+                        // Display validation error using Toastr
+                        toastr.error('Please fill in all required fields.');
                     }
                 });
-            }
-        });
-    </script>
+
+                function validateForm() {
+                    // Add your specific validation logic here
+                    var firstName = $("input[name='first_name']").val();
+                    var lastName = $("input[name='last_name']").val();
+                    var course = $("select[name='course']").val();
+                    var phone = $("input[name='phone']").val();
+                    var message = $("textarea[name='message']").val();
+
+                    // Example: Check if required fields are not empty
+                    if (firstName === '' || lastName === '' || course === '' || phone === '' || message === '') {
+                        return false;
+                    }
+
+                    // Add more validation rules as needed
+
+                    return true;
+                }
+
+                function submitForm() {
+                    var formData = $(".appointment-form").serialize();
+
+                    // Perform AJAX submission
+                    $.ajax({
+                        type: "POST",
+                        url: $(".appointment-form").attr("action"),
+                        data: formData,
+                        dataType: "json",
+                        success: function(response) {
+                            // Display Toastr notification based on the response
+                            if (response.success) {
+                                toastr.success(response.message);
+                            } else {
+                                toastr.error(response.message);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle AJAX errors
+                            toastr.error("An error occurred while processing your request.");
+                        }
+                    });
+                }
+            });
+        </script>
+    @endpush
+
 @endsection

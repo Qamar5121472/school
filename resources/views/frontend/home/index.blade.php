@@ -182,7 +182,8 @@
                         mouth.</p>
                 </div>
                 <div class="col-md-3 d-flex align-items-center">
-                    <p class="mb-0"><a href="#" class="btn btn-secondary px-4 py-3">Take a Course</a></p>
+                    <p class="mb-0"><a href="{{ route('contact') }}" class="btn btn-secondary px-4 py-3">Take a
+                            Course</a></p>
                 </div>
             </div>
         </div>
@@ -593,7 +594,8 @@
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts.</p>
                         </div>
-                        <p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Take A
+                        <p class="button text-center"><a href="{{ route('contact') }}"
+                                class="btn btn-primary px-4 py-3">Take A
                                 Course</a></p>
                     </div>
                 </div>
@@ -609,7 +611,8 @@
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts.</p>
                         </div>
-                        <p class="button text-center"><a href="#" class="btn btn-secondary px-4 py-3">Take A
+                        <p class="button text-center"><a href="{{ route('contact') }}"
+                                class="btn btn-secondary px-4 py-3">Take A
                                 Course</a></p>
                     </div>
                 </div>
@@ -626,7 +629,8 @@
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts.</p>
                         </div>
-                        <p class="button text-center"><a href="#" class="btn btn-tertiary px-4 py-3">Take A
+                        <p class="button text-center"><a href="{{ route('contact') }}"
+                                class="btn btn-tertiary px-4 py-3">Take A
                                 Course</a></p>
                     </div>
                 </div>
@@ -642,7 +646,8 @@
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts.</p>
                         </div>
-                        <p class="button text-center"><a href="#" class="btn btn-quarternary px-4 py-3">Take A
+                        <p class="button text-center"><a href="{{ route('contact') }}"
+                                class="btn btn-quarternary px-4 py-3">Take A
                                 Course</a></p>
                     </div>
                 </div>

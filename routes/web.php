@@ -37,6 +37,8 @@ Route::controller(FrontendController::class)->group(function(){
     Route::POST('/teacher-registration','teacherRegistration')->name('teacherRegistration');
 
     Route::POST('/request-for-appointment','requestForAppointment')->name('requestForAppointment');
+
+    Route::post('/contactUs-submit', 'conatctForm')->name('contactUs');
 });
 Route::get('/dashboard', function () {
     return view('admin.dashboard.dashboard');

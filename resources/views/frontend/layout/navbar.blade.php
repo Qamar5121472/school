@@ -211,7 +211,7 @@
                     <script>
                         document.write(new Date().getFullYear());
                     </script> All rights reserved | This template is made with by <a
-                        href="{{ url('/') }}" target="_blank">SQA SOLUTIONS</a>
+                        href="{{ url('/') }}" target="_blank">SQA SCHOOL</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>

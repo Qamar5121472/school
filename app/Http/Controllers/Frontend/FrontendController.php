@@ -92,6 +92,46 @@ class FrontendController extends Controller
 
     }
 
+    public function conatctForm(Request $request){
+        try{
+            DB::beginTransaction();
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'message' => 'required',
+                'subject' => 'required',
+            ]);
+            $model = new enquery();
+            $model->first_name =  $request->name;
+            // $model->last_name = $request->last_name;
+            // $model->phone_no = $request->phone;
+            $model->class = $request->subject;
+            $model->message = $request->message;
+            $model->save();
+            if(isset($model)){
+                $alert['type'] = 'success';
+                $alert['message'] = 'Your request Submitted successfullywe will let you soon! Thank You';
+                return redirect()->back()->with('alert',$alert);
+                // $success = 'success';
+                // return redirect()->back()->with('success','Request Submitted we will contact you in whlie');
+                // $message = 'Submit Your request Sucessfully we will contact to you in while!';
+                // return response()->json(['success' => $success, 'message' => $message]);
+            }else{
+                $alert['type'] = 'error';
+                $alert['message'] = 'Your request Submitted successfullywe will let you soon! Thank You';
+                return redirect()->back()->with('alert',$alert);
+                // $success = 'error';
+                // return redirect()->back()->with('success','Something went wrong try again');
+            }
+            DB::commit();
+        }catch(Exception $exception){
+            DB::rollBack();
+            $error = '';
+            $message = 'Something went wrong!';
+            return response()->json(['error' => $error, 'message' => $message]);
+        }
+    }
+
 
      public function joinUs(){
         try{
